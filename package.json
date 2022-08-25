@@ -2,9 +2,11 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "Node Koa server",
-  "main": "index.ts",
+  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "ts": "tsc",
+    "watch-ts": "tsc -w",
+    "start": "nodemon index.js"
   },
   "repository": {
     "type": "git",
@@ -15,6 +17,19 @@
   "bugs": {
     "url": "https://github.com/prabhauser/MERN/issues"
   },
-  "homepage": "https://github.com/prabhauser/MERN#readme"
+  "homepage": "https://github.com/prabhauser/MERN#readme",
+  "devDependencies": {
+    "concurrently": "^7.3.0",
+    "nodemon": "^2.0.19",
+    "ts-node": "^10.9.1",
+    "tsc": "^2.0.4"
+  },
+  "dependencies": {
+    "koa": "^2.13.4",
+    "koa-ejs": "^4.3.0",
+    "koa-json": "^2.0.2",
+    "koa-router": "^12.0.0",
+    "path": "^0.12.7",
+    "typescript": "^4.7.4"
+  }
 }
-
