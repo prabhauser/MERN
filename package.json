@@ -2,11 +2,11 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "Node Koa server",
-  "main": "index.js",
+  "main": "index.ts",
   "scripts": {
     "ts": "tsc",
     "watch-ts": "tsc -w",
-    "start": "nodemon index.js"
+    "start": "nodemon ./src/index.ts"
   },
   "repository": {
     "type": "git",
@@ -19,16 +19,29 @@
   },
   "homepage": "https://github.com/prabhauser/MERN#readme",
   "devDependencies": {
+    "@types/koa": "^2.13.5",
+    "@types/koa-json": "^2.0.20",
+    "@types/koa-router": "^7.4.4",
+    "@types/node": "^18.7.13",
     "concurrently": "^7.3.0",
     "nodemon": "^2.0.19",
     "ts-node": "^10.9.1",
     "tsc": "^2.0.4"
   },
   "dependencies": {
+    "ajv": "^8.11.0",
+    "json-schema": "^0.4.0",
     "koa": "^2.13.4",
+    "koa-body": "^5.0.0",
+    "koa-compress": "^5.1.0",
+    "koa-cors": "0.0.16",
+    "koa-csrf": "^5.0.1",
     "koa-ejs": "^4.3.0",
+    "koa-helmet": "^6.1.0",
     "koa-json": "^2.0.2",
+    "koa-ratelimit": "^5.0.1",
     "koa-router": "^12.0.0",
+    "mongodb": "^4.9.0",
     "path": "^0.12.7",
     "typescript": "^4.7.4"
   }
