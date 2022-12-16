@@ -29,7 +29,10 @@
     "tsc": "^2.0.4"
   },
   "dependencies": {
+    "@types/cors": "^2.8.13",
+    "@types/koa-cors": "^0.0.2",
     "ajv": "^8.11.0",
+    "cors": "^2.8.5",
     "json-schema": "^0.4.0",
     "koa": "^2.13.4",
     "koa-body": "^5.0.0",

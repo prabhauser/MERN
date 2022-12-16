@@ -12,13 +12,12 @@ class User {
 
   static showAllUsers() {
     const db = getDB();
-    console.log(db);
     return db
       .collection("user_mstr")
       .find()
       .toArray()
       .then((user: any) => {
-        return user;
+        return { data: user };
       })
       .catch((error: any) => {
         console.log(error);

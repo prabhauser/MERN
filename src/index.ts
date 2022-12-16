@@ -3,11 +3,13 @@ import KoaRouter from "koa-router";
 import json from "koa-json";
 import { MongoConnect } from "./utils/mongodb/node-mongo-wrapper";
 import { getProduct1 } from "./controller/users";
+import cors from "koa-cors";
 
 const app = new Koa();
 const router = new KoaRouter();
 
 app.use(json());
+app.use(cors());
 
 app.use(router.routes()).use(router.allowedMethods());
 
