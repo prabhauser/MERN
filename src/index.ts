@@ -1,16 +1,22 @@
-import Koa from 'koa';
-import KoaRouter from 'koa-router';
-import json from 'koa-json';
-import { connectMongoDb } from './utils/mongodb/node-mongo-wrapper';
+import Koa from "koa";
+import KoaRouter from "koa-router";
+import json from "koa-json";
+import { MongoConnect } from "./utils/mongodb/node-mongo-wrapper";
+import { getProduct1 } from "./controller/users";
 
 const app = new Koa();
 const router = new KoaRouter();
 
 app.use(json());
-connectMongoDb();
 
 app.use(router.routes()).use(router.allowedMethods());
 
-app.listen(3000, () => console.log('Server Started..'));
+router.get("/getUsers", async (ctx: any) => {
+  const users = await getProduct1();
+  ctx.body = users;
+  ctx.status = 200;
+});
 
-router.get('/test', (ctx) => (ctx.body = 'Sample test route'));
+MongoConnect(() => {
+  app.listen(3000, () => console.log(`App listening on port ${3000}!`));
+});

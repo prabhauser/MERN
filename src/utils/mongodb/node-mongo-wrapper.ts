@@ -1,26 +1,36 @@
-import { MongoClient } from 'mongodb';
+import { MongoClient } from "mongodb";
 import {
   DB_USER_NAME,
   DB_PASSWORD,
   DB_HOST_NAME,
   DB_NAME,
-} from './db-constants';
+} from "./db-constants";
 
 const getConnectionString = (): string => {
-  let conUrl = '';
+  let conUrl = "";
   const dbUserName = encodeURIComponent(DB_USER_NAME);
   const dbPassword = encodeURIComponent(DB_PASSWORD);
   conUrl = `mongodb+srv://${dbUserName}:${dbPassword}@${DB_HOST_NAME}/${DB_NAME}`;
   return conUrl;
 };
 
-const connectMongoDb = async () => {
-  const client = new MongoClient(getConnectionString());
-  try {
-    await client.connect();
-    console.log('db connected');
-  } catch (error) {
-    console.log(error);
-  }
+let _db: any;
+const MongoConnect = (callback: any) => {
+  MongoClient.connect(getConnectionString())
+    .then((client) => {
+      _db = client.db();
+      callback();
+    })
+    .catch((err) => {
+      throw err;
+    });
 };
-export { connectMongoDb };
+
+const getDB = () => {
+  if (_db) {
+    return _db;
+  }
+  throw "no DB found";
+};
+
+export { getDB, MongoConnect };
